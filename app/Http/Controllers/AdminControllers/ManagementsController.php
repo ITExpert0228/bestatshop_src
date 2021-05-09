@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
@@ -68,15 +68,15 @@ class ManagementsController extends Controller
      return false;
    }
    // Gets author data & prepare verification vars
-   $purchase_code 	= urlencode( $purchase_code );
-   $current_site_url = $_SERVER['REQUEST_URI'];
-   $url = $this->api_url. '/api.php?code=' . $purchase_code."&url=".$current_site_url;
-   $response = $this->curl( $url );
-   if (isset($response->error) && $response->error == '404' ) {
-     return redirect()->back()->with('error', $response->description);
-   }elseif(isset($response->id) and !empty($response->id)){
-     $purchase_id = $response->id;
-   }
+//    $purchase_code 	= urlencode( $purchase_code );
+//    $current_site_url = $_SERVER['REQUEST_URI'];
+//    $url = $this->api_url. '/api.php?code=' . $purchase_code."&url=".$current_site_url;
+//    $response = $this->curl( $url );
+//    if (isset($response->error) && $response->error == '404' ) {
+//      return redirect()->back()->with('error', $response->description);
+//    }elseif(isset($response->id) and !empty($response->id)){
+//      $purchase_id = $response->id;
+//    }
    $tables = array();
    $result = DB::select("SHOW TABLES");
    $var = 'Tables_in_'.Config::get('database.connections.mysql.database');
@@ -84,11 +84,11 @@ class ManagementsController extends Controller
      $tables[] = $results->$var;
    }
    $return = '';
-  
+
    //$table ='users';
    foreach ($tables as $table) {
      $return .= 'TRUNCATE '.$table.'; ';
-    
+
    	$result = DB::table($table)->get();
    		foreach ($result as $key => $value) {
         $return_fields = '';
@@ -108,16 +108,16 @@ class ManagementsController extends Controller
                 $return_values .= ", '".$value."'";
                 $return_fields .= ", `".$key."`";
               }
-              
+
               $i++;
           }
          $return_values .= ");";
          $return_fields .= ");";
          $return .= $return_fields.$return_values."\n\n\n";
        }
-       
-       
-       
+
+
+
    }
    $handle = fopen('backup.sql', 'w+');
    fwrite($handle, $return);
@@ -135,7 +135,7 @@ class ManagementsController extends Controller
 
   public function import(Request $request){
     $title = array('pageTitle' => Lang::get("labels.Import Data"));
-    
+
     $result['commonContent'] = $this->Setting->commonContent();
     return view("admin.managements.import", $title)->with('result',$result);
   }
@@ -164,15 +164,15 @@ class ManagementsController extends Controller
         return false;
       }
       // Gets author data & prepare verification vars
-      $purchase_code 	= urlencode( $purchase_code );
-      $current_site_url = $_SERVER['REQUEST_URI'];
-      $url = $this->api_url. '/api.php?code=' . $purchase_code."&url=".$current_site_url;
-      $response = $this->curl( $url );
-      if (isset($response->error) && $response->error == '404' ) {
-        return redirect()->back()->with('error', $response->description);
-      }elseif(isset($response->id) and !empty($response->id)){
-        $purchase_id = $response->id;
-      }
+    //   $purchase_code 	= urlencode( $purchase_code );
+    //   $current_site_url = $_SERVER['REQUEST_URI'];
+    //   $url = $this->api_url. '/api.php?code=' . $purchase_code."&url=".$current_site_url;
+    //   $response = $this->curl( $url );
+    //   if (isset($response->error) && $response->error == '404' ) {
+    //     return redirect()->back()->with('error', $response->description);
+    //   }elseif(isset($response->id) and !empty($response->id)){
+    //     $purchase_id = $response->id;
+    //   }
 
       $filename = $request->file('zip_file')->getClientOriginalName();
       $source = $request->file('zip_file')->getPathName();
@@ -256,15 +256,15 @@ class ManagementsController extends Controller
         return false;
       }
       // Gets author data & prepare verification vars
-      $purchase_code 	= urlencode( $purchase_code );
-      $current_site_url = $_SERVER['REQUEST_URI'];
-      $url = $this->api_url. '/api.php?code=' . $purchase_code."&url=".$current_site_url;
-      $response = $this->curl( $url );
-      if (isset($response->error) && $response->error == '404' ) {
-        return redirect()->back()->with('error', $response->description);
-      }elseif(isset($response->id) and !empty($response->id)){
-        $purchase_id = $response->id;
-      }
+    //   $purchase_code 	= urlencode( $purchase_code );
+    //   $current_site_url = $_SERVER['REQUEST_URI'];
+    //   $url = $this->api_url. '/api.php?code=' . $purchase_code."&url=".$current_site_url;
+    //   $response = $this->curl( $url );
+    //   if (isset($response->error) && $response->error == '404' ) {
+    //     return redirect()->back()->with('error', $response->description);
+    //   }elseif(isset($response->id) and !empty($response->id)){
+    //     $purchase_id = $response->id;
+    //   }
 
       $filename = $request->file('zip_file')->getClientOriginalName();
       $source = $request->file('zip_file')->getPathName();
@@ -400,15 +400,15 @@ class ManagementsController extends Controller
         return false;
       }
       // Gets author data & prepare verification vars
-      $purchase_code 	= urlencode( $purchase_code );
-      $current_site_url = $_SERVER['REQUEST_URI'];
-      $url = $this->api_url. '/api.php?code=' . $purchase_code."&url=".$current_site_url;
-      $response = $this->curl( $url );
-      if (isset($response->error) && $response->error == '404' ) {
-        return redirect()->back()->with('error', $response->description);
-      }elseif(isset($response->id) and !empty($response->id)){
-        $purchase_id = $response->id;
-      }
+    //   $purchase_code 	= urlencode( $purchase_code );
+    //   $current_site_url = $_SERVER['REQUEST_URI'];
+    //   $url = $this->api_url. '/api.php?code=' . $purchase_code."&url=".$current_site_url;
+    //   $response = $this->curl( $url );
+    //   if (isset($response->error) && $response->error == '404' ) {
+    //     return redirect()->back()->with('error', $response->description);
+    //   }elseif(isset($response->id) and !empty($response->id)){
+    //     $purchase_id = $response->id;
+    //   }
 
 
     $filename = $request->file('zip_file')->getClientOriginalName();
