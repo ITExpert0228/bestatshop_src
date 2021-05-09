@@ -3,3 +3,5 @@
 *.scss linguist-vendored
 *.js linguist-vendored
 CHANGELOG.md export-ignore
+#Purchase (License) Script
+vendor/vectorcoder/laravel-installer/src/Controllers/EnvironmentController.php
