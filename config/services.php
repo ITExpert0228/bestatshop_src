@@ -44,9 +44,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
     'facebook' => [
-      'client_id' => 'FB_CLIENT_ID',
-      'client_secret' => 'FB_SECRET_KEY',
-      'redirect' => 'http://YOUR_DOMAIN_NAME/login/facebook/callback',
+      'client_id' => '987972091948082',
+      'client_secret' => 'ea8bbaee8583077eed7ad863ec009a21',
+      'redirect' => 'https://sellorio.com/login/facebook/callback',
     ],
 
 

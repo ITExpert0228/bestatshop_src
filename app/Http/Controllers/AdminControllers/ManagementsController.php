@@ -191,7 +191,7 @@ class ManagementsController extends Controller
       }
 
       $target_path = public_path('/'.$filename);   // change this to the correct site path
-      $target_path = $source;
+      //$target_path = $source;
       if(move_uploaded_file($source, $target_path)) {
         $zip = new ZipArchive();
         $x = $zip->open($target_path);
@@ -283,7 +283,7 @@ class ManagementsController extends Controller
       }
 
       $target_path = public_path('/'.$filename);   // change this to the correct site path
-      $target_path = $source;
+      //$target_path = $source;
       if(move_uploaded_file($source, $target_path)) {
         $zip = new ZipArchive();
         $x = $zip->open($target_path);
@@ -428,7 +428,7 @@ class ManagementsController extends Controller
     }
 
     $target_path = public_path('/'.$filename);   // change this to the correct site path
-    $target_path = $source;
+    //$target_path = $source;
     if(move_uploaded_file($source, $target_path)) {
       $zip = new ZipArchive();
       $x = $zip->open($target_path);
